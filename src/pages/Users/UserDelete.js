@@ -22,10 +22,10 @@ function UsersDelete() {
                                 className="form-control"
                                 name="judul"
                             />
-                            <button type="submit" className="btn btn-danger">
-                                Simpan
-                            </button>
                         </div>
+                        <button type="submit" className="btn btn-danger">
+                            Simpan
+                        </button>
                     </form>
                 </div>
             </div>

@@ -22,10 +22,10 @@ function BukuDelete() {
                                 className="form-control"
                                 name="judul"
                             />
-                            <button type="submit" className="btn btn-danger">
-                                Hapus
-                            </button>
                         </div>
+                        <button type="submit" className="btn btn-danger">
+                            Hapus
+                        </button>
                     </form>
                 </div>
             </div>

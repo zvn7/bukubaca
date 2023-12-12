@@ -22,10 +22,10 @@ function UsersEdit() {
                                 className="form-control"
                                 name="judul"
                             />
-                            <button type="submit" className="btn btn-success">
-                                Simpan
-                            </button>
                         </div>
+                        <button type="submit" className="btn btn-success">
+                            Simpan
+                        </button>
                     </form>
                 </div>
             </div>
