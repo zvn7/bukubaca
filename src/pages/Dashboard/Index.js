@@ -11,7 +11,7 @@ class Home extends Component {
                         <h1>Dashboard Buku Baca</h1>
                     </div>
                     <div className="content">
-                        Selamat datang di pelatihan React JS
+                        <p>Sistem Manajemen Perpustakaan</p>
                     </div>
                 </div>
             </div>
