@@ -1,7 +1,3 @@
-# Getting Started with Create React App
-
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
-
 # Quick Start
 
 <ol>
@@ -10,6 +6,10 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
     <li>Install dependencies: Run <code>npm install</code> inside the project folder</li>
     <li>Start dev server: After the install finishes, run <code>npm start</code>. A browser window will open on http://localhost:3000 where you''ll see the live preview</li>
 </ol>
+
+# Getting Started with Create React App
+
+This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ### `npm install`
 
