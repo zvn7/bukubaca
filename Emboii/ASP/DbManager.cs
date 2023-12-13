@@ -137,4 +137,93 @@ public class DbManager
             }
         }
     }
+    // History
+    public List<ReadHistori> GetHistori()
+    {
+        List<ReadHistori> historiList = new List<ReadHistori>();
+        try
+        {
+            using (MySqlConnection connection = new MySqlConnection(connectionString))
+            {
+                string query = "call getallhistori()";
+                MySqlCommand command = new MySqlCommand(query,connection);
+                connection.Open();
+                using (MySqlDataReader reader = command.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        ReadHistori historis = new ReadHistori
+                        {
+                            id = Convert.ToInt32(reader["id"]),
+                            id_buku = Convert.ToInt32(reader["id_buku"]),
+                            buku = reader["buku"].ToString(),
+                            id_user = Convert.ToInt32(reader["id_user"]),
+                            peminjam = reader["peminjam"].ToString(),
+                            tanggal_pinjam = Convert.ToDateTime(reader["tanggal_pinjam"]),
+                            tanggal_kembali = Convert.ToDateTime(reader["tanggal_kembali"])
+                        };
+                        historiList.Add(historis);
+                    }
+                }
+            }
+        } catch (Exception ex)
+        {
+            Console.WriteLine(ex.Message);
+        }
+        return historiList;
+    }
+
+    public List<Histori> GetHistoriById(int id)
+    {
+        List<Histori> historiList = new List<Histori>();
+        try
+        {
+            using (MySqlConnection connection = new MySqlConnection(connectionString))
+            {
+                string query = "SELECT * FROM `histori_peminjaman` where id = @id";
+                MySqlCommand command = new MySqlCommand(query,connection);
+                command.Parameters.AddWithValue("@id", id); 
+                connection.Open();
+                using (MySqlDataReader reader = command.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        Histori historis = new Histori
+                        {
+                            id = Convert.ToInt32(reader["id"]),
+                            id_buku = Convert.ToInt32(reader["id_buku"]),
+                            id_peminjam = Convert.ToInt32(reader["id_peminjam"]),
+                            tanggal_pinjam = Convert.ToDateTime(reader["tanggal_pinjam"]),
+                            tanggal_kembali = Convert.ToDateTime(reader["tanggal_kembali"])
+                        };
+                        historiList.Add(historis);
+                    }
+                }
+            }
+        } catch (Exception ex)
+        {
+            Console.WriteLine(ex.Message);
+        }
+        return historiList;
+    }
+
+    public int CreateHistori(Histori histori)
+    {
+        using (MySqlConnection connection = _connection)
+        {
+            string query = "INSERT INTO histori_peminjaman (id_buku, id_peminjam, tanggal_kembali) VALUES (@Id_Buku, @Id_Peminjam, @Tanggal_Kembali);"+
+                "update buku set status = 0 where id = @Id_Buku;";
+            using (MySqlCommand command = new MySqlCommand(query, connection))
+            {
+                command.Parameters.AddWithValue("@Id_Buku", histori.id_buku);
+                command.Parameters.AddWithValue("@Id_Peminjam", histori.id_peminjam);
+                // command.Parameters.AddWithValue("@Tanggal_Pinjam", histori.tanggal_pinjam);
+                command.Parameters.AddWithValue("@Tanggal_Kembali", histori.tanggal_kembali);
+
+                connection.Open();
+                return command.ExecuteNonQuery();
+            }
+        }
+    }
+    // End History
 }
