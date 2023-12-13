@@ -2,7 +2,6 @@ import React from "react";
 import axios from "axios";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { useParams } from "react-router-dom";
-import "./User.css";
 
 function UsersDelete() {
   // Membuat komponen fungsi UsersDelete menggunakan useParams hook untuk mendapatkan id dari parameter URL dan useState hook untuk mengelola state form (formValue)

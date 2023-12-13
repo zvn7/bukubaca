@@ -21,11 +21,19 @@ function Histori() {
   };
 
   const columns = [
+    // {
+    //   name: "ID",
+    //   selector: (row) => row.id,
+    //   sortable: true,
+    // },
     {
-      name: "ID",
+      name: "#",
       selector: (row) => row.id,
       sortable: true,
-    },
+      width: "55px",
+      // Custom cell function to display sequential numbers
+      cell: (row, index) => <div>{index + 1}</div>,
+  },
     {
       name: "Buku",
       selector: (row) => row.buku,

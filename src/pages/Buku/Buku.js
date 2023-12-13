@@ -12,18 +12,28 @@ function DataBuku() {
     }, []);
 
     const fectData = async () => {
-        const response = await axios.get("http://localhost:5000/buku");
-        const data = await response.data.data[0]
+        const response = await axios.get(
+            "http://localhost:5154/api/Buku/Buku/getAllBuku"
+        );
+        const data = await response.data.data;
         setDatabuku(data);
         console.log(data);
-    }
+    };
 
     const columns = [
         {
-            name: "No",
-            selector: (row) => row.no,
+            name: "#",
+            selector: (row) => row.id,
             sortable: true,
+            width: "55px",
+            // Custom cell function to display sequential numbers
+            cell: (row, index) => <div>{index + 1}</div>,
         },
+        // {
+        //     name: "No",
+        //     selector: (row) => row.id,
+        //     sortable: true,
+        // },
         {
             name: "Judul",
             selector: (row) => row.judul,
@@ -40,24 +50,31 @@ function DataBuku() {
             sortable: true,
         },
         {
+            name: "Status",
+            selector: (row) => row.status,
+            sortable: true,
+        },
+        {
             name: "Actions",
-            cell: (row) => (
+            selector: (row) => (
                 <div style={{ display: "flex", gap: "10px" }}>
-                    <button
+                    <Link
+                        to={"/buku/edit/" + row.id}
                         className="btn btn-warning"
                     >
                         Edit
-                    </button>
-                    <button
+                    </Link>
+                    <Link
+                        to={"/buku/delete/" + row.id}
                         className="btn btn-danger"
                     >
                         Delete
-                    </button>
+                    </Link>
                 </div>
             ),
             width: "170px",
         },
-    ]
+    ];
 
     return (
         <div className="container mt-5">
@@ -66,9 +83,9 @@ function DataBuku() {
                     <h1>Data Buku</h1>
                 </div>
                 <div className="conten">
-                    <button className="btn btn-primary mt-4">
-                        Tambah Data
-                    </button>
+                    <Link to="/buku/add" className="btn btn-primary">
+                        Tambah Buku
+                    </Link>
                     <DataTable columns={columns} data={databuku} pagination />
                 </div>
             </div>

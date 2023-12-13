@@ -1,7 +1,6 @@
 import React from "react";
 import axios from "axios";
 import "bootstrap/dist/css/bootstrap.min.css";
-import "./User.css";
 
 function UsersAdd() {
   // Membuat komponen fungsi UsersAdd menggunakan useState hook untuk mengelola state form (formValue)
