@@ -11,7 +11,11 @@ function BukuEdit() {
     const [formValue, setformValue] = React.useState({
         judul: '',
         pengarang: '',
-        penerbit: ''
+        penerbit: '',
+        kategori: '',
+        issn: '',
+        jumlah_halaman: '',
+        tahun: ''
     });
     //useEffect hook
     React.useEffect(() => {
@@ -41,6 +45,10 @@ function BukuEdit() {
         FormDataInput.append("judul", formValue.judul)
         FormDataInput.append("pengarang", formValue.pengarang)
         FormDataInput.append("penerbit", formValue.penerbit)
+        FormDataInput.append("kategori", formValue.kategori)
+        FormDataInput.append("issn", formValue.issn)
+        FormDataInput.append("jumlah_halaman", formValue.jumlah_halaman)
+        FormDataInput.append("tahun", formValue.tahun)
         alert('Data berhasil diubah')
         try {
             // make axios post request
@@ -74,7 +82,7 @@ function BukuEdit() {
                                 name="judul"
                                 placeholder="enter judul"
                                 value={formValue.judul}
-                                onChange={handleChange}
+                                onChange={(e) => handleChange(e)}
                             />
                             <label htmlFor="pengarang" className="form-label">
                                 Pengarang:
@@ -97,7 +105,52 @@ function BukuEdit() {
                                 placeholder="enter penerbit"
                                 value={formValue.penerbit}
                                 onChange={handleChange}
-                            /><br />
+                            />
+                            <label htmlFor="kategori" className="form-label">
+                                Kategori:
+                            </label>
+                            <input
+                                type="text"
+                                className="form-control"
+                                name="kategori"
+                                placeholder="enter kategori"
+                                value={formValue.kategori}
+                                onChange={handleChange}
+                            />
+                            <label htmlFor="issn" className="form-label">
+                                ISSN:
+                            </label>
+                            <input
+                                type="text"
+                                className="form-control"
+                                name="issn"
+                                placeholder="enter issn"
+                                value={formValue.issn}
+                                onChange={handleChange}
+                            />
+                            <label htmlFor="jumlah_halaman" className="form-label">
+                                Jumlah Halaman:
+                            </label>
+                            <input
+                                type="number"
+                                className="form-control"
+                                name="jumlah_halaman"
+                                placeholder="enter jumlah_halaman"
+                                value={formValue.jumlah_halaman}
+                                onChange={handleChange}
+                            />
+                            <label htmlFor="tahun" className="form-label">
+                                Tahun:
+                            </label>
+                            <input
+                                type="number"
+                                className="form-control"
+                                name="tahun"
+                                placeholder="enter tahun"
+                                value={formValue.tahun}
+                                onChange={handleChange}
+                            />
+                            <br />
                             <button type="submit" className="btn btn-success">
                                 Simpan
                             </button>

@@ -50,6 +50,26 @@ function DataBukuView() {
             sortable: true,
         },
         {
+            name: "Kategori",
+            selector: (row) => row.kategori,
+            sortable: true,
+        },
+        {
+            name: "Issn",
+            selector: (row) => row.issn,
+            sortable: true,
+        },
+        {
+            name: "Jumlah Halaman",
+            selector: (row) => row.jumlah_halaman,
+            sortable: true,
+        },
+        {
+            name: "Tahun",
+            selector: (row) => row.tahun,
+            sortable: true,
+        },
+        {
             name: "Status",
             selector: (row) => row.status,
             sortable: true,

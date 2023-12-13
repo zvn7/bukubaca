@@ -9,6 +9,10 @@ function BukuAdd() {
         judul: '',
         pengarang: '',
         penerbit: '',
+        kategori: '',
+        issn: '',
+        jumlah_halaman: '',
+        tahun: '',
         status: ''
     });
     const handleChange = (event) => {
@@ -24,6 +28,10 @@ function BukuAdd() {
         FormDataInput.append("judul", formValue.judul)
         FormDataInput.append("pengarang", formValue.pengarang)
         FormDataInput.append("penerbit", formValue.penerbit)
+        FormDataInput.append("kategori", formValue.kategori)
+        FormDataInput.append("issn", formValue.issn)
+        FormDataInput.append("jumlah_halaman", formValue.jumlah_halaman)
+        FormDataInput.append("tahun", formValue.tahun)
         FormDataInput.append("status", formValue.status)
         alert('Data berhasil disimpan')
         try {
@@ -41,7 +49,7 @@ function BukuAdd() {
         }
     }
     return (
-        <div className="container mt-5">
+        <div className="container mt-5 mb-5">
             <div className="card p-5 shadow">
                 <div className="Title">
                     <h1>Tambah Data Buku</h1>
@@ -80,6 +88,50 @@ function BukuAdd() {
                                 name="penerbit"
                                 placeholder="enter penerbit"
                                 value={formValue.penerbit}
+                                onChange={handleChange}
+                            />
+                            <label htmlFor="kategori" className="form-label">
+                                Kategori:
+                            </label>
+                            <input
+                                type="text"
+                                className="form-control"
+                                name="kategori"
+                                placeholder="enter kategori"
+                                value={formValue.kategori}
+                                onChange={handleChange}
+                            />
+                            <label htmlFor="issn" className="form-label">
+                                ISSN:
+                            </label>
+                            <input
+                                type="text"
+                                className="form-control"
+                                name="issn"
+                                placeholder="enter issn"
+                                value={formValue.issn}
+                                onChange={handleChange}
+                            />
+                            <label htmlFor="jumlah_halaman" className="form-label">
+                                Jumlah Halaman:
+                            </label>
+                            <input
+                                type="text"
+                                className="form-control"
+                                name="jumlah_halaman"
+                                placeholder="enter jumlah_halaman"
+                                value={formValue.jumlah_halaman}
+                                onChange={handleChange}
+                            />
+                            <label htmlFor="tahun" className="form-label">
+                                Tahun:
+                            </label>
+                            <input
+                                type="text"
+                                className="form-control"
+                                name="tahun"
+                                placeholder="enter tahun"
+                                value={formValue.tahun}
                                 onChange={handleChange}
                             />
                             <label htmlFor="status" className="form-label">
