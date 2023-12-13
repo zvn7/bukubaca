@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Menu from "./menu/Menu";
 import Dashboard from "./pages/Dashboard/Index";
 import Buku from "./pages/Buku/Buku";
+import BukuView from "./pages/Buku/Buku-View";
 import BukuAdd from "./pages/Buku/BukuAdd";
 import BukuEdit from "./pages/Buku/BukuEdit";
 import BukuDelete from "./pages/Buku/BukuDelete";
@@ -26,6 +27,7 @@ function App() {
                 <Routes>
                     <Route path="/" element={<Dashboard />} />
                     <Route path="/buku" element={<Buku />} />
+                    <Route path="/buku-view" element={<BukuView />} />
                     <Route path="/buku/add" element={<BukuAdd />} />
                     <Route path="/buku/edit/:id" element={<BukuEdit />} />
                     <Route path="/buku/delete/:id" element={<BukuDelete />} />
