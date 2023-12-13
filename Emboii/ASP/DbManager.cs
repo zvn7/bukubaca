@@ -84,14 +84,20 @@ public class DbManager
     // CREATE USER
     public int CreateUser(User user)
     {
+        // Mengatur nilai default untuk status jika tidak ada nilai yang diberikan
+        if (user.status == 0)
+        {
+            user.status = 1; // Set nilai default ke 1
+        }
         using (MySqlConnection connection = _connection)
     {
-        string query = "INSERT INTO user (nama, username, sandi, role) VALUES (@nama, @username, @sandi, @role)";
+        string query = "INSERT INTO user (nama, username, sandi, status, role) VALUES (@nama, @username, @sandi, @status, @role)";
         using (MySqlCommand command = new MySqlCommand(query, connection))
             {
                 command.Parameters.AddWithValue("@nama", user.nama);
                 command.Parameters.AddWithValue("@username", user.username);
                 command.Parameters.AddWithValue("@sandi", user.sandi);
+                command.Parameters.AddWithValue("@status", user.status);
                 command.Parameters.AddWithValue("@role", user.role);
 
                 connection.Open();
