@@ -68,7 +68,7 @@ function UsersDelete() {
     <div className="card p-5 shadow">
       <div className="container mt-5">
         <div className="Title">
-          <h1>Hapus Data Trainer {id}</h1>
+          <h1>Hapus Data User {id}</h1>
         </div>
         <div className="conten mt-4">
           <form onSubmit={handleSubmit}>
